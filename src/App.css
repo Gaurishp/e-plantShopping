@@ -1,147 +1,472 @@
-/* LandingPage.css */
+
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
-  overflow: hidden;
+}
+
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #26332a;
+  background: #f5f7f3;
+  font-synthesis: none;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+button:focus-visible {
+  outline: 3px solid #174f27;
+  outline-offset: 3px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+.navbar {
+  min-height: 76px;
+  padding: 12px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: #49ad50;
+  color: white;
+  box-shadow: 0 2px 10px #00000015;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  background: transparent;
+  color: white;
+  text-align: left;
+}
+
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  background: white;
+  font-size: 24px;
+}
+
+.brand strong,
+.brand small {
+  display: block;
+}
+
+.brand strong {
+  font-size: 17px;
+}
+
+.brand small {
+  margin-top: 3px;
+  font-size: 11px;
+  font-style: italic;
+}
+
+.navbar nav {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.nav-link,
+.cart-link {
+  border: 0;
+  background: transparent;
+  color: white;
+}
+
+.nav-link {
+  padding: 12px;
+  font-size: 17px;
+}
+
+.nav-link.active {
+  border-bottom: 2px solid white;
+}
+
+.cart-link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cart-symbol {
+  font-size: 27px;
+}
+
+.cart-count {
+  display: grid;
+  place-items: center;
+  min-width: 23px;
+  height: 23px;
+  padding: 0 5px;
+  border-radius: 50%;
+  background: white;
+  color: #287333;
+  font-weight: bold;
 }
 
 .landing-page {
   position: relative;
-  width: 100vw;
-  height: 100vh;
-  background-color: #f8f8f8;
-}
-
-.background-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('https://cdn.pixabay.com/photo/2017/07/13/08/59/greenhouse-2499758_1280.jpg');
-  background-size: 100% 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  align-items: center;
+  gap: 45px;
+  padding: 70px 7%;
+  color: white;
+  background-image: url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=2000&q=85");
+  background-size: cover;
   background-position: center;
-  filter: brightness(0.8);
-}
-.content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
- top: 100px;
-  backdrop-filter: blur(4px);
-  background-color: rgba(0,0,0,0.5);
-  gap: 20px;
 }
 
-.landing_content {
- margin-top: 430px;
-  margin-left: 100px;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  text-align: center;
-  /* background-color: red; */
-  width: 400px;
-  height: 400px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px;
-}
-
-.content p,
-.content h1 {
-  color: white;
-}
-
-.content h1 {
-  font-size: 48px;
-  margin-bottom: 10px;
-}
-
-.content p {
-  font-size: 25px;
-}
-
-.divider {
-  width: 50px;
-  height: 2px;
-  background-color: #4caf50;
-  margin: 10px 0;
-}
-
-.get-started-button {
-  padding: 15px 25px;
-  font-size: 23px;
-  border: none;
-  border-radius: 5px;
-  background-color: #4caf50;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 40px;
-}
-
-.get-started-button:hover {
-  background-color: #45a049;
-}
-
-/* ProductList.css */
-
-.product-list-container {
+.landing-overlay {
   position: absolute;
-  overflow-x: hidden;
-  top: 100vh;
-  /* Initially off-screen */
-  left: 0;
+  inset: 0;
+  background: rgb(0 0 0 / 63%);
+}
+
+.landing-intro,
+.landing-description {
+  position: relative;
+  z-index: 1;
+}
+
+.landing-intro {
+  text-align: center;
+}
+
+.landing-intro h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1.15;
+}
+
+.green-line {
+  display: block;
+  width: 55px;
+  height: 3px;
+  margin: 20px auto;
+  background: #69d276;
+}
+
+.landing-intro p {
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+.landing-description {
+  text-align: justify;
+  line-height: 1.7;
+}
+
+.landing-description p {
+  margin: 0 0 18px;
+}
+
+.welcome-caption {
+  text-align: center;
+  font-size: 18px;
+}
+
+.primary-button {
+  padding: 12px 23px;
+  border: 0;
+  border-radius: 5px;
+  background: #49ad50;
+  color: white;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.primary-button:hover:not(:disabled) {
+  background: #328b3a;
+  transform: translateY(-1px);
+}
+
+.primary-button:disabled,
+.primary-button.added {
+  background: #888;
+  color: white;
+}
+
+.products-page,
+.cart-page {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  padding: 35px 0 60px;
+}
+
+.page-heading {
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+.page-heading h1,
+.cart-page > h1 {
+  margin-top: 0;
+  color: #276d36;
+}
+
+.page-heading p {
+  color: #6a776b;
+}
+
+.plant-category {
+  margin: 35px 0 45px;
+}
+
+.plant-category h2 {
+  width: fit-content;
+  margin: 0 auto 25px;
+  padding: 0 20px 10px;
+  border-bottom: 2px solid #4caf50;
+  text-align: center;
+}
+
+.plant-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.plant-card {
+  overflow: hidden;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 4px 16px #00000012;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.plant-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px #00000018;
+}
+
+.plant-image {
+  display: block;
   width: 100%;
-  height: 100vh;
-  background-color: rgba(255, 255, 255, 0.9);
-  /* Adjust background opacity as needed */
-  transition: top 0.5s ease;
-  /* Smooth transition for top property */
-  overflow-y: auto;
-  /* Enable vertical scrolling */
-  z-index: 2;
-  /* Ensure it's above landing page content */
-  backdrop-filter: blur(5px);
+  height: 225px;
+  object-fit: cover;
+  background: #e7eee4;
 }
 
-.product-list-container.visible {
-  top: 0;
-}
-/* LandingPage.css */
-@media screen and (max-width: 768px) {
-  .content {
-    flex-direction: column;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-  }
-
-  .landing_content {
-    margin-top: 100px; /* Adjust as needed */
-    margin-left: 0;
-    width: 80%; /* Adjust as needed */
-    text-align: center;
-  }
-
-  .aboutus_container {
-    margin-top: 20px; /* Adjust as needed */
-    width: 80%; /* Adjust as needed */
-  }
+.plant-details {
+  padding: 18px;
 }
 
-@media screen and (max-width: 480px) {
-  .landing_content {
-    margin-top: 50px; /* Adjust as needed */
-    width: 90%; /* Adjust as needed */
+.plant-details h3 {
+  margin: 0 0 10px;
+}
+
+.plant-description {
+  min-height: 42px;
+  color: #687269;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.plant-price {
+  color: #b95353;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.cart-page > h1 {
+  text-align: center;
+}
+
+.cart-summary {
+  margin: 12px 0;
+  text-align: center;
+  font-size: 18px;
+}
+
+.cart-items {
+  width: min(760px, 100%);
+  margin: 30px auto;
+}
+
+.cart-item {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 18px;
+  padding: 18px;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 3px 12px #00000010;
+}
+
+.cart-item > img {
+  width: 180px;
+  min-height: 170px;
+  align-self: stretch;
+  border-radius: 7px;
+  object-fit: cover;
+  background: #e7eee4;
+}
+
+.cart-item-details {
+  flex: 1;
+}
+
+.cart-item-details h3 {
+  margin-top: 0;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 14px 0;
+}
+
+.quantity-controls button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #d9e2d8;
+  border-radius: 5px;
+  background: #f0f5ee;
+  color: #276d36;
+  font-size: 20px;
+}
+
+.item-total {
+  font-weight: bold;
+}
+
+.delete-button {
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 5px;
+  background: #df5a5a;
+  color: white;
+}
+
+.delete-button:hover {
+  background: #bf3737;
+}
+
+.cart-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 35px 0 10px;
+}
+
+.checkout-button {
+  background: #388e3c;
+}
+
+.empty-cart {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 55px;
+}
+
+.empty-cart p {
+  color: #6a776b;
+}
+
+@media (max-width: 800px) {
+  .landing-page {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 45px 7%;
   }
 
-  .aboutus_container {
-    width: 90%; /* Adjust as needed */
+  .landing-intro h1 {
+    font-size: 36px;
+  }
+
+  .plant-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .plant-image {
+    height: 190px;
+  }
+}
+
+@media (max-width: 520px) {
+  .navbar {
+    padding: 12px 4%;
+    gap: 8px;
+  }
+
+  .brand-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 19px;
+  }
+
+  .brand strong {
+    font-size: 13px;
+  }
+
+  .brand small {
+    font-size: 9px;
+  }
+
+  .navbar nav {
+    gap: 5px;
+  }
+
+  .nav-link {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .plant-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .plant-image {
+    height: 240px;
+  }
+
+  .cart-item {
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .cart-item > img {
+    width: 110px;
+    min-height: 140px;
+  }
+
+  .cart-item-details h3 {
+    font-size: 16px;
+  }
+
+  .cart-item-details p {
+    font-size: 13px;
+  }
+
+  .quantity-controls {
+    gap: 8px;
   }
 }
